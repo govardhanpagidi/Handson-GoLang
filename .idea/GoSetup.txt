@@ -1,0 +1,17 @@
+Install GoLang SDK
+Setup GOPATH and GOROOT environment variables
+
+Installing IDE (GoLand/VisualStudioCode) 
+
+
+Setting up proxy 
+	host is comproxy.utc.com
+	port is 80 optional
+	username is windows userid ( eg: pagidig)
+	password is windows password		
+	
+Seeting up proxy to download github packages:
+
+	Open cmd prompt and run the below command
+
+	git config --global http.proxy http://pagidig:Password@comproxy.utc.com:80
