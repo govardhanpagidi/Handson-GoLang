@@ -7,14 +7,43 @@ import "testing"
 // > go test
 
 
-func TestReverseString(t *testing.T){
+
+func TestReverseString_If_Strings_AreNotEqual(t *testing.T){
+	cases :=  []struct{
+		in,want string
+	}{
+		{"testing","gniset"},
+	}
+
+	for _,c := range cases{
+		got := Reverse(c.in)
+		if got == c.want {
+			t.Errorf("Reverse (%q) == %q, want %q", c.in,got,c.want)
+		}
+	}
+}
+
+func TestReverseString_If_Strings_AreEqual(t *testing.T){
 	cases :=  []struct{
 		in,want string
 	}{
 		{"Hello world","dlrow olleH"},
 		{"Hello, 世界", "界世 ,olleH"},
-		{"testing","gniset"},
-		{"", ""},
+	}
+
+	for _,c := range cases{
+		got := Reverse(c.in)
+		if got != c.want {
+			t.Errorf("Reverse (%q) == %q, want %q", c.in,got,c.want)
+		}
+	}
+}
+
+func TestReverseString_If_Strings_AreNonEnglish(t *testing.T){
+	cases :=  []struct{
+		in,want string
+	}{
+		{"Hello, 世界", "界世 ,olleH"},
 	}
 
 	for _,c := range cases{
