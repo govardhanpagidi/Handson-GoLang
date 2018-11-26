@@ -1,6 +1,6 @@
 package main
 
-import(
+import (
 	"fmt"
 )
 
@@ -8,85 +8,13 @@ import(
 // Open the terminal or cmd prompt, CD to helloworld.go dir, Run the below command
 // go run HelloWorld.go
 
+//alias print method
+var print = fmt.Println
+
 func main() {
-	fmt.Println("Hello world!")
+	display("hello world!")
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func display(text string){
+	print(text)
+}

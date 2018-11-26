@@ -6,11 +6,11 @@ import (
 	"sync"
 )
 
-var wg sync.WaitGroup 
+var wg sync.WaitGroup
 
-func main(){
+func main() {
 
-	for i:= 0; i< 5; i++{
+	for i := 0; i < 5; i++ {
 		wg.Add(1)
 		go routine(i)
 	}
@@ -18,8 +18,7 @@ func main(){
 	fmt.Print("Main thread is closed.")
 }
 
-func routine(i int){
-
-	fmt.Println("Routine finished : " ,i)
+func routine(i int) {
+	fmt.Println("Routine finished : ", i)
 	defer wg.Done()
 }
