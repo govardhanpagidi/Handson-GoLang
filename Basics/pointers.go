@@ -12,6 +12,22 @@ type gopher struct {
 
 func main() {
 
+	 a := 12
+	 fmt.Println(*&a)
+	 fmt.Println(&a)
+	 fmt.Printf("type of a %T\n",a)
+	 fmt.Printf("type of *&a %T\n",*&a)
+
+
+	 b :=  &a;
+	 fmt.Printf("type of b %T\n",b)
+
+	 fmt.Println(*b)
+	 *b = 23
+	 fmt.Println(a)
+
+
+
 	ravi := gopher{name: "Ravi", age: 25}
 
 	validateAge(&ravi)

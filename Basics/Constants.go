@@ -6,13 +6,14 @@ import (
 )
 
 const str string = "someconstant"
-func main(){
+
+func main() {
 
 	fmt.Println(str)
 
-	const n = 50000;
+	const n = 50000
 
-	const d = 3e20 /n 
+	const d = 3e20 / n
 
 	fmt.Println(d)
 	fmt.Println(int64(d))
