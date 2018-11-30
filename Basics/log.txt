@@ -1,2 +1,3 @@
-2018/11/29 13:02:34 err happened open abs.txt: The system cannot find the file specified.
-2018/11/29 13:02:34 open abs.txt: The system cannot find the file specified.
+2018/11/29 18:14:44 Trying to open a file.
+2018/11/29 18:14:44 After opening a file
+2018/11/29 18:14:44 open abs.txt: The system cannot find the file specified.

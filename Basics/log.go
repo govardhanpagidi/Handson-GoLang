@@ -15,10 +15,18 @@ func init(){
 
 func main(){
 
+	// Open a file
+	log.Println("Trying to open a file.")
+
+	defer fileOp()
+	
+	log.Println("After opening a file")
+}
+
+func fileOp(){
 	_,err := os.Open("abs.txt")
 
 	if err != nil{
-		log.Println("err happened",err)
 		log.Fatal(err)
 		panic(err)
 	}
