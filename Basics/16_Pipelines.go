@@ -5,8 +5,6 @@ import (
 	"sync"
 )
 
-
-
 //Converting list of numbers into channels that emits the integers in the given list
 //The gen function starts a go routine that sends the integers on the channel and closes the channel when all values have been sent
 func gen(nums ...int) <-chan int {
@@ -88,7 +86,6 @@ func main() {
 	fmt.Println("No Of Go routines	: ", runtime.NumGoroutine())
 
 }
-
 
 //Fanout and Fanin
 // func main() {
