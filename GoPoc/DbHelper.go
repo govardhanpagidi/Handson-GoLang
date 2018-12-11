@@ -1,22 +1,57 @@
-package DB
+package main
 
 import (
 	"fmt"
-	
+	_"github.com/lib/pq"
+	"database/sql"
 )
 
-func SaveEvent(string key, string value){
+//connectionString := "User ID=sa;Password=Password;Host=gopoc.c9lfhf7ayih8.ap-south-1.rds.amazonaws.com;Port=5432;Database=smarthome;Pooling=true;Min Pool Size=0;Max Pool Size=100;Connection Lifetime=0;"
+
+const (
+	host     = "gopoc.c9lfhf7ayih8.ap-south-1.rds.amazonaws.com"
+	port     = 5432
+	user     = "sa"
+	password = "Password"
+	dbname   = "smarthome"
+
+  )
+
+
+func main(){
+	ConnectRDS();
+}
+
+
+func SaveEvent( key string,  value string){
 
 }
 
-func ConnectDynamoDB(string conString){
+func ConnectRDS( ){
+	
+	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
+    "password=%s dbname=%s sslmode=disable",
+    host, port, user, password, dbname)
+	
+	
 
-	sess, err := session.NewSession(&aws.Config{
-		Region: aws.String("Mumbai")},
-	)
+	db,err := sql.Open("postgres",psqlInfo)
+	
+	if err != nil{
+	fmt.Println("error : ",err)
+		panic(err)
+	}
 
-	// Create DynamoDB client
-	svc := dynamodb.New(sess)
+	fmt.Println("rds connected")
 
-	return true;
+
+	query := "CREATE TABLE Event(event_id VARCHAR (50)  PRIMARY KEY,value STRING	);"
+	 _,er := db.Exec(query)
+
+	 if er != nil{
+		fmt.Println("error : ",er)
+			panic(er)
+		}
+	fmt.Println("Event Table created")
+		
 }
