@@ -19,16 +19,13 @@
 // 	print(text)
 // }
 
-
-
-
 package main
- 
+
 import (
 	"fmt"
 	"time"
 )
- 
+
 func f1(c chan int, quit chan bool) {
 	i := 0
 	ticker := time.NewTicker(5000 * time.Millisecond)
@@ -48,18 +45,18 @@ func f1(c chan int, quit chan bool) {
 		}
 	}
 }
- 
+
 func main() {
 	c := make(chan int)
 	q := make(chan bool)
- 
+
 	go f1(c, q)
- 
+
 	for v := range c {
 		fmt.Println("Received ", v)
 		if v == 5 {
 			fmt.Println("We got 5, and we're done.")
- 
+
 			// if the program didn't end here, the goroutine would still be running
 			//time.Sleep(100 * time.Second)
 			//break

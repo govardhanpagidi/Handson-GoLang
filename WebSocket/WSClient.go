@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-var address = flag.String("addr", "localhost:8080", "http server address")
+var address = flag.String("addr", "52.66.206.199:8080", "http server address")
 
 func main() {
 
@@ -23,7 +23,7 @@ func main() {
 	interrupt := make(chan os.Signal, 1)
 	signal.Notify(interrupt, os.Interrupt)
 
-	u := url.URL{Scheme: "ws", Host: *address, Path: "/echo"}
+	u := url.URL{Scheme: "ws", Host: *address, Path: "/ds"}
 	log.Printf("Connecting to %s ", u.String())
 
 	c, _, err := websocket.DefaultDialer.Dial(u.String(), nil)
@@ -47,7 +47,7 @@ func main() {
 		}
 	}()
 
-	timeTicker := time.NewTicker(time.Second * 5)
+	timeTicker := time.NewTicker(time.Second * 30)
 	defer timeTicker.Stop()
 
 	for {
