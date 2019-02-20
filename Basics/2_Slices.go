@@ -4,7 +4,9 @@ import "fmt"
 
 func main() {
 
-	s := make([]string, 3)
+	s := make([]string,4)
+
+	b := [5]int{1, 2, 3, 4, 5}
 
 	fmt.Println("emp:", s)
 
@@ -12,23 +14,36 @@ func main() {
 	s[1] = "2"
 	s[2] = "3"
 
-	s = append(s, "4")
-	s = append(s, "5", "6")
+	fmt.Println(s)
+	test(s)
+	fmt.Println(s)
 
-	fmt.Println("emp list:", s)
 
-	c := make([]string, len(s))
-	copy(c, s)
+fmt.Println(b)
 
-	fmt.Println("copylist :", c)
+	testArray(b)
+	
+	fmt.Println(b)
 
-	l := s[2:5]
-	fmt.Println("sllice with 2:5", l)
 
-	pr := s[:5]
-	fmt.Println("preceeding with :5", pr)
 
-	t := s[2:]
-	fmt.Println("next with 2:", t)
+	fmt.Println(b)
 
+	testArrayWithRef (&b)
+	
+	fmt.Println(b)
+}
+
+
+func test(s []string){
+	s[0] = "234";
+}
+
+func testArray(a [5]int){
+	a[0] = 67;
+}
+
+
+func testArrayWithRef(a *[5]int){
+	a[0] = 78;
 }

@@ -25,6 +25,8 @@ func main() {
 	fmt.Println(m2)
 
 	m2["k3"] = 1003
-	fmt.Println(m2)
+	val,ok := m2["k4"]
+	
+	fmt.Println(val,ok)
 
 }

@@ -8,6 +8,15 @@ type point struct {
 }
 
 func main() {
+
+	x:= "gova"
+
+	fmt.Println("first time",  &x)
+
+	x += "rdhan"
+
+	fmt.Println("first time",  &x)
+
 	p := point{1, 2}
 
 	fmt.Printf("%v\n", p)

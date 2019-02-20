@@ -22,3 +22,7 @@ func main(){
 	router.HandleFunc("/events",GetEvents).Methods("GET")
 
 }
+
+func GetEvents(deviceId string){
+	GetEventsByDeviceId()
+}

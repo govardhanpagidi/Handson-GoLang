@@ -5,7 +5,8 @@ import (
 	"github.com/gorilla/websocket"
 	"html/template"
 	"log"
-	"net/http"
+    "net/http"
+    "main2"
 )
 
 //Server address on which it runs
