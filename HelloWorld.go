@@ -29,7 +29,7 @@ import (
 func f1(c chan int, quit chan bool) {
 	i := 0
 	ticker := time.NewTicker(5000 * time.Millisecond)
-	fmt.Println("ticker initiated")
+	fmt.Println("ticker initiated...")
 	for {
 		select {
 		case <-ticker.C:
