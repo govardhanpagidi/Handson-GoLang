@@ -22,6 +22,6 @@ echo "Full version: ${full_version}"
 pkg=github.com/pagidi/GoLang
 
 echo --- start buiding
-go build -o GoPractice
+go build -o GoPractice-$(version)
 echo --- End buiding
 
