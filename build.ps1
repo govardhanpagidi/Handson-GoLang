@@ -1,1 +1,1 @@
-Write-Host "Congratulations! Your first script executed successfully...done"
+Write-Host "Congratulations! Your first script executed successfully...do"
