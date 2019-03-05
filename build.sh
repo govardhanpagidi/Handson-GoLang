@@ -26,4 +26,5 @@
 # echo --- End buiding
 
 echo --- start buiding
+echo --- Generate builds
 echo --- End buiding
