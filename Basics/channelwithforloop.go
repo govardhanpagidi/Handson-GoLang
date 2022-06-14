@@ -1,5 +1,8 @@
 // You can edit this code!
 // Click here and start typing.
+
+//This is helpful when you want to process bigger array of elements without memory issues
+//Uses channel to process one by one rather than holding the entire array in memory
 package main
 
 import (
