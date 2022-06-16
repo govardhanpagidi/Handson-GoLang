@@ -1,14 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gorilla/websocket"
+	"html/template"
 	"log"
 	"net/http"
-	"html/template"
+	_ "net/http/pprof"
 	"os"
-	"github.com/nu7hatch/gouuid"
-	"fmt"
-
+	"time"
 )
 
 //Configuration
@@ -25,9 +25,11 @@ func init() {
 func main() {
 	//Attach websocket handler
 	http.HandleFunc("/ds", handleWebsocket)
+	http.HandleFunc("/hello", hello)
 
-	// Attach home page of device server 
+	// Attach home page of device server
 	http.HandleFunc("/", land)
+	fmt.Println("server started..")
 	log.Fatal(http.ListenAndServe(address, nil))
 }
 
@@ -51,10 +53,9 @@ func handleWebsocket(w http.ResponseWriter, r *http.Request) {
 			log.Println("read : ", error)
 		}
 
-
-		val := string (message)
+		val := string(message)
 		val = "Server Acknowledgment for ---> " + val
-		err := conn.WriteMessage(messageType, []byte (val))
+		err := conn.WriteMessage(messageType, []byte(val))
 
 		if error != nil {
 			log.Println("Write : ", err)
@@ -62,17 +63,25 @@ func handleWebsocket(w http.ResponseWriter, r *http.Request) {
 
 		//eventId := string (uuid.NewRandom())
 
-		uuid, err := uuid.NewV4()
 		if err != nil {
 			log.Println("UUID generation failed : ", err)
 		}
-		log.Println("Event id, Val ",uuid.String(),val)
+		log.Println("Event id, Val ", time.Now().String(), val)
 
-		go SaveEvent(uuid.String(),val)
-		
+		go SaveEvent(time.Now().String(), val)
 
 		fmt.Println("Event saved")
 	}
+
+}
+
+func hello(w http.ResponseWriter, r *http.Request) {
+
+	log.Println("Event id, Val ", time.Now().String())
+
+	go SaveEvent(time.Now().String(), "hello")
+
+	fmt.Println("Event saved")
 
 }
 
@@ -81,7 +90,7 @@ func land(w http.ResponseWriter, r *http.Request) {
 }
 
 var homeTemplate = template.Must(
-					template.New("ServerIndex").Parse(`
+	template.New("ServerIndex").Parse(`
 									<!DOCTYPE html>
 									<html>
 										<head>
